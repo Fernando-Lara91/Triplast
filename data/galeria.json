@@ -1,0 +1,14 @@
+[
+  {
+    "imagen": "assets/img/galeria/prototipo-01.jpg",
+    "descripcion": "Prototipo y desarrollo de material"
+  },
+  {
+    "imagen": "assets/img/galeria/obra-01.jpg",
+    "descripcion": "Aplicación proyectada en obra"
+  },
+  {
+    "imagen": "assets/img/galeria/equipo-01.jpg",
+    "descripcion": "Equipo y actividades de investigación"
+  }
+]

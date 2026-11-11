@@ -1,0 +1,7 @@
+# Archivos de editor, entorno y caché; conserva tus imágenes y JSON.
+.DS_Store
+Thumbs.db
+.vscode/
+__pycache__/
+*.pyc
+.env
