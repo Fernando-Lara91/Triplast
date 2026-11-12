@@ -29,17 +29,45 @@
     if (img.complete) checkImage(img);
   });
   window.triplastCheckImages();
-  // Solo muestra resultados si están configuradas TODAS las tasas.
-  const $range = $('#metros');
+  // CALCULADORA: calcula y muestra los tres resultados para cada cambio de perímetro.
+  // Todas las constantes están en config.js para facilitar posteriores ajustes.
+  const range = $('#metros');
+  const petResult = $('#pet-result');
+  const bottlesResult = $('#bottles-result');
+  const co2Result = $('#co2-result');
+  const metresOutput = $('#metros-output');
+  const note = $('#calc-note');
+  const formatInteger = value => new Intl.NumberFormat('es-CL', {maximumFractionDigits: 0}).format(value);
+  const formatDecimal = value => new Intl.NumberFormat('es-CL', {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(value);
+
   function calculate() {
-    const metres = Number($range.value), cfg = window.TRIPLAST_CONFIG.impacto;
-    $('#metros-output').textContent = metres.toLocaleString('es-CL');
-    const valid = [cfg.kgPetPorMetro,cfg.botellasPorKg,cfg.kgCO2eEvitadoPorMetro].every(x => typeof x === 'number' && Number.isFinite(x) && x > 0);
-    const fmt = n => n.toLocaleString('es-CL',{maximumFractionDigits:2});
-    $('#pet-result').textContent = valid ? fmt(metres*cfg.kgPetPorMetro) : '—';
-    $('#bottles-result').textContent = valid ? fmt(Math.round(metres*cfg.kgPetPorMetro*cfg.botellasPorKg)) : '—';
-    $('#co2-result').textContent = valid ? fmt(metres*cfg.kgCO2eEvitadoPorMetro) : '—';
-    $('#calc-note').textContent = valid ? 'Valores referenciales según los factores ingresados por el equipo en js/config.js. Revisar metodología antes de publicar.' : 'Pendiente de factores técnicos validados. Edita js/config.js y documenta las fuentes antes de publicar cifras.';
+    const metres = Number(range.value);
+    const cfg = window.TRIPLAST_CONFIG?.impacto;
+    const valid = Number.isFinite(metres) && metres >= 0 && cfg &&
+      [cfg.kgPetPorMetro, cfg.botellasPorKg, cfg.kgCO2eEvitadoPorMetro]
+        .every(value => typeof value === 'number' && Number.isFinite(value) && value > 0);
+
+    metresOutput.textContent = formatInteger(metres);
+    if (!valid) {
+      petResult.textContent = bottlesResult.textContent = co2Result.textContent = '—';
+      note.textContent = 'No se pueden calcular resultados: revisa los factores en js/config.js.';
+      return;
+    }
+
+    // Unidades: m × kg/m = kg de PET.
+    const petKg = metres * cfg.kgPetPorMetro;
+    // Unidades: kg de PET × botellas/kg = botellas equivalentes.
+    const bottles = Math.round(petKg * cfg.botellasPorKg);
+    // Unidades: m × kg de CO₂e/m = kg de CO₂e estimado.
+    const co2Kg = metres * cfg.kgCO2eEvitadoPorMetro;
+
+    petResult.textContent = `${formatDecimal(petKg)} kg`;
+    bottlesResult.textContent = `${formatInteger(bottles)} botellas`;
+    co2Result.textContent = `${formatDecimal(co2Kg)} kg`;
+    note.textContent = 'Los resultados se actualizan automáticamente al mover el perímetro lineal. Valores referenciales sujetos a validación técnica.';
   }
-  $range.addEventListener('input',calculate); calculate();
+  range.addEventListener('input', calculate);
+  range.addEventListener('change', calculate);
+  calculate();
+
 })();

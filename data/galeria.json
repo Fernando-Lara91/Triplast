@@ -1,14 +1,34 @@
 [
   {
-    "imagen": "assets/img/galeria/prototipo-01.jpg",
-    "descripcion": "Prototipo y desarrollo de material"
+    "imagen": "assets/img/galeria/panel-construccion.webp",
+    "descripcion": "Muestra del panel de cierre perimetral de Triplast"
   },
   {
-    "imagen": "assets/img/galeria/obra-01.jpg",
-    "descripcion": "Aplicación proyectada en obra"
+    "imagen": "assets/img/galeria/muestra-material.webp",
+    "descripcion": "Muestra del material asociado al prototipo de Triplast"
   },
   {
-    "imagen": "assets/img/galeria/equipo-01.jpg",
-    "descripcion": "Equipo y actividades de investigación"
+    "imagen": "assets/img/galeria/reconocimiento-escenario.webp",
+    "descripcion": "Triplast recibe el reconocimiento del Reto Construye Academia 2026"
+  },
+  {
+    "imagen": "assets/img/galeria/equipo-reto-2026.webp",
+    "descripcion": "Fotografía del equipo ganador del Reto Construye Academia 2026"
+  },
+  {
+    "imagen": "assets/img/galeria/afiche-triplast.webp",
+    "descripcion": "Afiche informativo original de Triplast"
+  },
+  {
+    "imagen": "assets/img/galeria/participantes-edifica.webp",
+    "descripcion": "Participantes del encuentro Edifica 2026"
+  },
+  {
+    "imagen": "assets/img/galeria/premiacion-triplast.webp",
+    "descripcion": "Equipo Triplast durante el reconocimiento Construye Academia 2026"
+  },
+  {
+    "imagen": "assets/img/galeria/participantes-cchc.webp",
+    "descripcion": "Encuentro de participantes en dependencias de la Cámara Chilena de la Construcción"
   }
 ]

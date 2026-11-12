@@ -1,11 +1,18 @@
-/* CONFIGURACIÓN GENERAL DEL SITIO: cambia correos, nombres y factores aquí. */
+/*
+ * Factores REFERENCIALES reconstruidos de los resultados publicados en
+ * https://triplast.base44.app/ (consulta: 12-11-2026, 500 metros).
+ * No constituyen una medición, certificación ni análisis de ciclo de vida.
+ * Antes de publicar afirmaciones ambientales verificadas, documentar:
+ * - masa real de PET por metro de cierre;
+ * - masa promedio real de una botella PET de 600 ml;
+ * - línea base y alcance del ahorro de CO2e (fabricación, transporte, vida útil).
+ */
 window.TRIPLAST_CONFIG = {
   correo: 'contactotriplast@gmail.com',
-  // No se publican tasas ambientales sin metodología verificable.
-  // Completa estos tres factores SOLAMENTE si tienes respaldo técnico.
   impacto: {
-    kgPetPorMetro: null,        // Ejemplo de unidad: kg PET / metro lineal.
-    botellasPorKg: null,        // Ejemplo de unidad: botellas / kg PET.
-    kgCO2eEvitadoPorMetro: null // Ejemplo de unidad: kg CO2e / metro lineal.
+    kgPetPorMetro: 97.5,
+    botellasPorKg: 40,
+    kgCO2eEvitadoPorMetro: 441.16,
+    estado: 'referencial_no_validado'
   }
 };

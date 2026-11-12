@@ -36,3 +36,12 @@ En GitHub Desktop o Visual Studio Code: revisa los cambios, haz **commit** y lue
 
 ## F. ¿Se pueden publicar noticias directamente desde una pantalla de administración?
 Este sitio usa GitHub Pages (alojamiento estático). Por seguridad, **no** incluye un formulario público que escriba noticias o suba archivos. Para eso habría que incorporar un CMS (por ejemplo, una solución Git-based compatible con repositorios) y configurarlo con autenticación, o un backend administrado.
+
+## G. Instagram oficial y fotografías
+- Enlace del perfil: https://www.instagram.com/triplast_cl/
+- La sección de Instagram enlaza al perfil oficial y la galería utiliza **fotografías locales del proyecto**.
+- **No es un feed automático**: publicar en Instagram no agrega fotos automáticamente a esta web.
+- Para agregar fotos: copia archivos JPG, PNG o WEBP a `assets/img/galeria/` y registra cada imagen en `data/galeria.json`.
+- Para enlazar una publicación específica, puedes agregar un enlace visible en la página o una noticia; las publicaciones individuales públicas pueden embeberse con el código oficial de Instagram.
+- Un feed completo que se actualice solo requiere integración adicional con servicios o API de Meta, y no debe guardar tokens secretos dentro de un repositorio público.
+- Las fotografías incorporadas provienen del ZIP facilitado por el equipo. Comprueba derechos de imagen y autoría antes de publicar.

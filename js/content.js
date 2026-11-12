@@ -3,7 +3,7 @@
   'use strict';
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const safeImage = path => typeof path === 'string' && /^assets\/img\/[a-zA-Z0-9_./-]+\.(jpg|jpeg|png|webp)$/i.test(path) && !path.includes('..') ? path : '';
-  const photo = (path, alt, cls='') => `<div class="image-slot ${cls}"><img src="${esc(safeImage(path) || 'assets/img/sin-foto.jpg')}" alt="${esc(alt)}" data-fallback="Imagen pendiente de agregar" loading="lazy"></div>`;
+  const photo = (path, alt, cls='') => `<div class="image-slot ${cls}"><img src="${esc(safeImage(path) || 'assets/img/logo-triplast.webp')}" alt="${esc(alt)}" loading="lazy" decoding="async"></div>`;
   async function getJson(path) { const response=await fetch(path,{cache:'no-cache'}); if(!response.ok) throw Error(`HTTP ${response.status}`); return response.json(); }
   const validators = [
     ['DIGUA','Mentoría y revisión en terreno.'],['MALPO','Retroalimentación sobre el diseño.'],['INDEPENDENCIA','Entrevistas con profesionales de la construcción.'],['CONEQUIP','Intercambio sobre propuesta y prototipo.'],['LAMA 3D','Asesoría sobre fabricación y producción.'],['UNIVERSIDAD FRANCISCO DE PAULA SANTANDER','Intercambio técnico académico internacional.']
@@ -11,8 +11,8 @@
   document.querySelector('#validators').innerHTML=validators.map(([name,txt],i)=>`<article class="validator"><span>VAL-${String(i+1).padStart(2,'0')}</span><h3>${esc(name)}</h3><p>${esc(txt)}</p></article>`).join('');
   const steps=[['Investigación','Estudio de alternativas y fundamentos del material.'],['Diseño del prototipo','Iteraciones de diseño, unión y apilamiento.'],['Retroalimentación industrial','Conversaciones con profesionales del sector.'],['Reto Construye Academia','Presentación del proyecto a la convocatoria.'],['Reconocimiento regional','Selección para representar a la región.'],['Reconocimiento nacional','Primer lugar nacional en 2026.']];
   document.querySelector('#timeline').innerHTML=steps.map(([title,txt],i)=>`<article class="step"><span>${String(i+1).padStart(2,'0')}</span><h3>${esc(title)}</h3><p>${esc(txt)}</p></article>`).join('');
-  const team=[['Maximiliano Olivares','Ingeniería Civil','Desarrollo técnico','assets/img/equipo/maximiliano.jpg'],['Lucas Villar','Arquitectura','Diseño y prototipo','assets/img/equipo/lucas.jpg'],['Marthin Arriagada','Ingeniería Civil','Validación técnica y modelo de negocio','assets/img/equipo/marthin.jpg']];
-  document.querySelector('#team-grid').innerHTML=team.map(([name,degree,role,img])=>`<article class="member">${photo(img,`Retrato de ${name}`,'member-photo')}<h3>${esc(name)}</h3><p>${esc(degree)}</p><p>${esc(role)}</p></article>`).join('');
+  const team=[['Maximiliano Olivares','Ingeniería Civil','Desarrollo técnico','assets/img/equipo/maximiliano.webp'],['Lucas Villar','Arquitectura','Diseño y prototipo','assets/img/equipo/lucas.webp'],['Marthin Arriagada','Ingeniería Civil','Validación técnica y modelo de negocio','assets/img/equipo/marthin.webp']];
+  document.querySelector('#team-grid').innerHTML=team.map(([name,degree,role,img])=>`<article class="member">${photo(img,`Retrato de ${name}`,'member-photo')}<div class="member-meta"><h3>${esc(name)}</h3><p class="member-degree">${esc(degree)}</p><p class="member-role">${esc(role)}</p></div></article>`).join('');
   const dialog=document.querySelector('#news-dialog');
   const detail=document.querySelector('#news-detail');
   document.querySelector('#close-news').onclick=()=>dialog.close();
@@ -45,7 +45,7 @@
       grid.innerHTML=list.map((item,index)=>`<button type="button" class="gallery-item" data-photo="${index}">${photo(item.imagen,item.descripcion)}<p>${esc(item.descripcion)}</p></button>`).join('');
       grid.querySelectorAll('[data-photo]').forEach(button=>button.addEventListener('click',()=>{
         const item=list[Number(button.dataset.photo)];
-        const image=document.querySelector('#photo-full');image.src=safeImage(item.imagen)||'assets/img/sin-foto.jpg';image.alt=item.descripcion;document.querySelector('#photo-caption').textContent=item.descripcion;lightbox.showModal();
+        const image=document.querySelector('#photo-full');image.src=safeImage(item.imagen)||'assets/img/logo-triplast.webp';image.alt=item.descripcion;document.querySelector('#photo-caption').textContent=item.descripcion;lightbox.showModal();
       }));
       window.triplastCheckImages(grid);
     }catch(err){grid.innerHTML='<p class="error-message">No se pudo cargar la galería.</p>';console.error(err)}
