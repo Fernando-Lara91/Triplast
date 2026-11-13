@@ -109,3 +109,7 @@ figure{margin:0}
   .impact-kpi-card{padding:24px 18px}
   .impact-kpi-value{font-size:36px}
 }
+
+.pitch-edifica { max-width: 900px; margin: 3rem auto 0; scroll-margin-top: 90px; }
+.pitch-edifica h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 1rem; }
+.pitch-edifica iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; margin-bottom: .75rem; }
